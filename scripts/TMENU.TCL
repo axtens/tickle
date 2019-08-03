@@ -1,0 +1,93 @@
+     VAR MENUFILE "C:\TICKLE\TMENU.BAT"
+     CREATE "&'VAR MENUFILE'"
+     APPEND "&'VAR MENUFILE'" "@Echo off" "tickle c:\tickle\tmenu.tcl"
+     CLS
+     NOTIFY "                                      MENU"
+     NOTIFY ""
+     NOTIFY "B Boot computer              C Command                     D dBase III Plus"
+     NOTIFY "E Edit a file                L Lotus                       1 123"
+     NOTIFY "M Multimate                  N Norton Utilities            O OS Shell"
+     NOTIFY "P PCBOSS                     S Spool/Print                 T Tickle"
+     NOTIFY "Z ZZZ - System sleep         X Exit to DOS"
+     NOTIFY ""
+     SHOWXY 9 27 "Choice: "
+LABEL GETLOOP
+     VAR A ""
+     GOTOXY 9 35
+     GETCHAR A
+     IF VAR A NI "BbCcDdEeLl1MmNnOoPpSsTtZzXx"
+              GOTO GETLOOP
+     ENDIF
+     NOTIFY "&'VAR A'"
+     GOTO LABEL&'VAR A'
+
+LABEL LABELB
+     APPEND "&'VAR MENUFILE'" "BOOT W"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELC
+     APPEND "&'VAR MENUFILE'" 'WHAT S "COMMAND: "' "IF (%WHAT%)==() GOTO FAIL" "%WHAT%" ":FAIL"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELD
+     APPEND "&'VAR MENUFILE'" "CD\DBASE" "DBASE"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELE
+     APPEND "&'VAR MENUFILE'" 'WHAT S "FILE TO EDIT: "' "IF (%WHAT%)==() GOTO FAIL" "Q %WHAT%" ":FAIL"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELL
+     APPEND "&'VAR MENUFILE'" "CD\APPL\LOTUS" "LOTUS"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABEL1
+     APPEND "&'VAR MENUFILE'" "CD\APPL\LOTUS" "123"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELM
+     APPEND "&'VAR MENUFILE'" "CD\APPL\MM" "MM"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELN
+     APPEND "&'VAR MENUFILE'" "CD\NORTON" "NI"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELO
+     APPEND "&'VAR MENUFILE'" "COMMAND"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELP
+     APPEND "&'VAR MENUFILE'" "PCBOSS"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELS
+     APPEND "&'VAR MENUFILE'" 'WHAT S "FILE/S TO PRINT: "' "IF (%WHAT%)==() GOTO FAIL" "COPY %WHAT% COM1" ":FAIL"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELT
+     APPEND "&'VAR MENUFILE'" 'WHAT S "FILE TO TICKLE: "' "IF (%WHAT%)==() GOTO FAIL" "TICKLE %WHAT%" ":FAIL"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELZ
+     APPEND "&'VAR MENUFILE'" "HDDPARK"
+     APPEND "&'VAR MENUFILE'" "CD\" "TICKLE &'VAR MENUFILE'"
+     HALT
+
+LABEL LABELX
+     HALT
+
+
+
